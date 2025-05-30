@@ -3,10 +3,18 @@
   background-color: royalblue;
 }
 
-.item{
-  color: white;   
+.item a{
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  display: block;
+  border: 1px solid #ccc;
 }
 
-.active{
+.item.activeLink{
   border:1px solid #ccc;
+  background-color: #ccc;
+  color: black;
+  background-color: #95d353;
+
 }
