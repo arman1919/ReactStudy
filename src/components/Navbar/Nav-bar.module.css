@@ -11,6 +11,11 @@
   border: 1px solid #ccc;
 }
 
+.item a:hover{
+  background-color: #ccc;
+  color: black;
+}
+
 .item.activeLink{
   border:1px solid #ccc;
   background-color: #ccc;
