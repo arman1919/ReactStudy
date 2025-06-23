@@ -1,14 +1,16 @@
 .nav {
   grid-area: n;
-  background-color: royalblue;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .item a{
+  color: #fff;
   color: white;
   padding: 15px;
   text-decoration: none;
   display: block;
-  border: 1px solid #ccc;
+  border: none;
 }
 
 .item a:hover{
@@ -17,6 +19,10 @@
 }
 
 .item.activeLink{
+  background-color: #fff;
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-weight: 600;
   border:1px solid #ccc;
   background-color: #ccc;
   color: black;

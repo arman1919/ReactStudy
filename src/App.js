@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import Header from './components/Header/Header';
 import NavBar from './components/Navbar/Nav-bar';
 import Profile from './components/Profile/Profile';
@@ -8,44 +8,17 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setigns from './components/Setigns/Setigns';
 
-function App() {
-
-    let dialogsData = [
-      {id: 1, name: "John"},
-      {id: 2, name: "Jane"},
-      {id: 3, name: "Jim"},
-      {id: 4, name: "Alex"},
-      {id: 5, name: "Bob"},
-      {id: 6, name: "Charlie"},
-      {id: 7, name: "David"},
-      {id: 8, name: "Ethan"},
-      {id: 9, name: "Frank"},
-      {id: 10, name: "George"},
-      {id: 11, name: "Hannah"},
-  ]
-
-  let messages = [
-      {id: 1, message: "Hello"},
-      {id: 2, message: "How are you?"},
-      {id: 3, message: "I'm fine, thank you!"},
-      {id: 4, message: "What are you doing?"},
-      {id: 5, message: "I'm doing nothing."},
-  ]
-
-  let postsData = [
-    {id: 1, message: "Hello", likesCount: 10},
-    {id: 2, message: "How are you?", likesCount: 45},
-  ]
+function App(props) {
 
   return (
     <BrowserRouter> 
-    <div className="app-wraper">
+    <div className={styles.appWrapper}>
       <Header />
       <NavBar />
-      <div className="app-wraper-content">
+      <div className={styles.appWrapperContent}>
       <Routes>
-        <Route path="/profile" element={<Profile postsData={postsData} />} />
-        <Route path="/dialogs" element={<Dialogs dialogsData={dialogsData} messagesData={messages} />} />
+        <Route path="/profile" element={<Profile postsData={props.postsData} />} />
+        <Route path="/dialogs" element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messages} />} />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Setigns />} />
