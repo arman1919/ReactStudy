@@ -1,9 +1,16 @@
-
-
+import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './post/Post';
 
 const MyPosts = (props) => {
+
+
+  let newPostElement =  React.createRef()
+
+  const onAddPostClick = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+  }
 
 
     return (
@@ -11,10 +18,10 @@ const MyPosts = (props) => {
           <h3>My post</h3>
           <div>
             <div>
-              <textarea></textarea>
+              <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-              <button>Add post</button>
+              <button onClick={onAddPostClick}>Add post</button>
             </div>
           </div>
           <div className={s.posts}>
