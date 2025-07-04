@@ -1,3 +1,6 @@
+
+import {renderEntireTree} from '../rendre';
+
 let state = {
     dialogPage: {
         dialogs: [
@@ -36,6 +39,7 @@ export const addPost = (postMessage) => {
         likesCount: 0,
     }
     state.profilePage.posts.push(newPost);
+    renderEntireTree(state);
     return state;
 }
 
