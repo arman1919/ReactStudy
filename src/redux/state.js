@@ -29,8 +29,11 @@ let state = {
             {id: 1, message: "Hello", likesCount: 10},
             {id: 2, message: "How are you?", likesCount: 45},
         ],
+        newPostText: "test post text",
     },
 }
+
+window.state = state;
 
 export const addPost = (postMessage) => {
     let newPost = {
@@ -40,7 +43,11 @@ export const addPost = (postMessage) => {
     }
     state.profilePage.posts.push(newPost);
     renderEntireTree(state);
-    return state;
+}
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    renderEntireTree(state);
 }
 
 export default state;
