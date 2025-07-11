@@ -2,7 +2,7 @@ import s from './Setigns.module.css';
 
 const Setigns = () => {
     return (
-        <div>
+        <div className={s.settingsContainer}>
             Setigns
         </div>
     );
