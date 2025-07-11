@@ -4,11 +4,36 @@
   grid-template-areas: 
     "h h"
     "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+  max-width: 1400px;
+  gap: 0;
 }
 
 .appWrapperContent {
   grid-area: c;
-  background-color: rgb(255, 153, 0);
+  background-color: var(--bg-color);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .appWrapper {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .appWrapper {
+    grid-template-areas: 
+      "h"
+      "c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+  }
+  
+  .appWrapperContent {
+    padding: 15px;
+  }
 }

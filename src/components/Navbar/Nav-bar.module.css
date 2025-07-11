@@ -1,31 +1,104 @@
 .nav {
   grid-area: n;
-  background-color: var(--primary-color);
-  color: #fff;
+  background: white;
+  border-right: 1px solid var(--border-light);
+  padding: 20px 0;
+  box-shadow: var(--shadow-light);
+  position: relative;
+  z-index: 50;
 }
 
-.item a{
-  color: #fff;
-  color: white;
-  padding: 15px;
-  text-decoration: none;
-  display: block;
-  border: none;
-}
-
-.item a:hover{
-  background-color: #ccc;
-  color: black;
-}
-
-.item.activeLink{
-  background-color: #fff;
-  color: var(--primary-color);
-  border-radius: 4px;
+.navTitle {
+  padding: 0 20px 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 16px;
   font-weight: 600;
-  border:1px solid #ccc;
-  background-color: #ccc;
-  color: black;
-  background-color: #95d353;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
+.item {
+  margin: 0 12px 8px;
+}
+
+.item a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: var(--radius-medium);
+  font-weight: 500;
+  font-size: 15px;
+  transition: var(--transition-fast);
+  position: relative;
+  gap: 12px;
+}
+
+.item a::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  opacity: 0.7;
+}
+
+.item a:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+.item a:hover::before {
+  opacity: 1;
+}
+
+.activeLink {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
+  color: white !important;
+  font-weight: 600;
+  box-shadow: var(--shadow-medium);
+  transform: translateX(4px);
+}
+
+.activeLink::before {
+  opacity: 1 !important;
+}
+
+.activeLink:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-active)) !important;
+  transform: translateX(6px);
+}
+
+/* Icon styles for different nav items */
+.item:nth-child(1) a::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+}
+
+.item:nth-child(2) a::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+}
+
+.item:nth-child(3) a::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+}
+
+.item:nth-child(4) a::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/%3E%3C/svg%3E");
+}
+
+.item:nth-child(5) a::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.82,11.69,4.82,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
 }
