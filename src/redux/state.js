@@ -1,7 +1,3 @@
-let renderEntireTree = (state) => {
-    
-}
-
 let store = {
     _state: {
         dialogPage: {
