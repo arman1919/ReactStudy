@@ -17,14 +17,13 @@ function App(props) {
       <NavBar />
       <div className={styles.appWrapperContent}>
       <Routes>
-        <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>} />
-        <Route path="/dialogs" element={<Dialogs state={props.state.dialogPage} />} />
+        <Route path="/profile" element={<Profile profilePage={props.profilePage} dispatch={props.dispatch} />} />
+        <Route path="/dialogs" element={<Dialogs state={props.dialogPage} />} />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Setigns />} />
       </Routes>
       </div>
-
     </div>
     </BrowserRouter>
   );

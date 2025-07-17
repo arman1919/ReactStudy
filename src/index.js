@@ -8,9 +8,18 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const renderEntireTree = (state) => {
+    if (!state) {
+        console.error('State is undefined');
+        return;
+    }
+    
     root.render(
         <React.StrictMode>
-            <App state={state} addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App 
+                profilePage={state.profilePage}
+                dialogPage={state.dialogPage}
+                dispatch={store.dispatch.bind(store)}
+            />
         </React.StrictMode>
     );
 }

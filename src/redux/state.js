@@ -30,31 +30,47 @@ let store = {
             newPostText: "test post text",
         },
     },
-    _renderEntireTree (state)  {
-        console.log("State changed");
+    _callSubscriber (state)  {
+        console.log("State changed", state);
     },
 
-    addPost (postMessage) {
-        let newPost = {
-            id: this._state.profilePage.posts.length + 1,
-            message: postMessage,
-            likesCount: 0,
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._renderEntireTree(this._state);
-    },
 
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this._renderEntireTree(this._state);
-    },
 
     subscribe (observer) {
-        this._renderEntireTree = observer;
+        this._callSubscriber = observer;
     },
 
     getState () {
         return this._state;
+    },
+
+    dispatch (action) { // {type: "ADD-POST"}
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: this._state.profilePage.posts.length + 1,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0,
+            }
+            let newState = {
+                ...this._state,
+                profilePage: {
+                    ...this._state.profilePage,
+                    posts: [...this._state.profilePage.posts, newPost],
+                    newPostText: ''
+                }
+            };
+            this._state = newState;
+            this._callSubscriber(this._state);
+        }else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state = {
+                ...this._state,
+                profilePage: {
+                    ...this._state.profilePage,
+                    newPostText: action.newText
+                }
+            };
+            this._callSubscriber(this._state);
+        }
     }
     
 }
