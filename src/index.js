@@ -19,6 +19,7 @@ const renderEntireTree = (state) => {
                 profilePage={state.profilePage}
                 dialogPage={state.dialogPage}
                 dispatch={store.dispatch.bind(store)}
+                store={store}
             />
         </React.StrictMode>
     );

@@ -18,7 +18,7 @@ function App(props) {
       <div className={styles.appWrapperContent}>
       <Routes>
         <Route path="/profile" element={<Profile profilePage={props.profilePage} dispatch={props.dispatch} />} />
-        <Route path="/dialogs" element={<Dialogs state={props.dialogPage} />} />
+        <Route path="/dialogs" element={<Dialogs store={props.store}/>} />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Setigns />} />
