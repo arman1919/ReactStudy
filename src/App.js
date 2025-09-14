@@ -8,7 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setigns from './components/Setigns/Setigns';
 
-function App(props) {
+function App() {
 
   return (
     <BrowserRouter> 
@@ -17,8 +17,8 @@ function App(props) {
       <NavBar />
       <div className={styles.appWrapperContent}>
       <Routes>
-        <Route path="/profile" element={<Profile store={props.store} />} />
-        <Route path="/dialogs" element={<DialogsContainer store={props.store}/>} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/dialogs" element={<DialogsContainer />} />
         <Route path="/news" element={<News />} />
         <Route path="/music" element={<Music />} />
         <Route path="/settings" element={<Setigns />} />

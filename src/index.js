@@ -5,6 +5,7 @@ import store from './redux/redux-store';
 import React from 'react';
 import './index.css';
 import App from './App';
+import {Provider} from './StoreContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const renderEntireTree = (state) => {
@@ -15,12 +16,9 @@ const renderEntireTree = (state) => {
     
     root.render(
         <React.StrictMode>
-            <App 
-                profilePage={state.profilePage}
-                dialogPage={state.dialogPage}
-                dispatch={store.dispatch.bind(store)}
-                store={store}
-            />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </React.StrictMode>
     );
 }
