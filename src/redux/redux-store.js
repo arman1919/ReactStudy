@@ -10,6 +10,8 @@ let reducers = combineReducers({
     sidebar: sidebarReducer
 })
 
-const store = configureStore({ reducer: reducers });
+let store = configureStore({ reducer: reducers });
+
+window.store = store;
 
 export default store;
