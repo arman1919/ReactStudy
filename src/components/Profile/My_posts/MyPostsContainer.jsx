@@ -1,36 +1,52 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
 import StoreContext from '../../../StoreContext';
 
-const MyPostsContainer = () => {
-  const store = useContext(StoreContext);
-  const [profileState, setProfileState] = useState(store.getState().profilePage);
+class MyPostsContainer extends React.Component {
+  static contextType = StoreContext;
 
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      setProfileState(store.getState().profilePage);
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      profileState: context.getState().profilePage,
+    };
+  }
+
+  componentDidMount() {
+    this.unsubscribe = this.context.subscribe(() => {
+      this.setState({
+        profileState: this.context.getState().profilePage,
+      });
     });
+  }
 
-    return unsubscribe;
-  }, [store]);
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
+  }
 
-  const addPost = () => {
-    store.dispatch(addPostActionCreator());
+  addPost = () => {
+    this.context.dispatch(addPostActionCreator());
   };
 
-  const onPostChange = (text) => {
-    store.dispatch(updateNewPostTextActionCreator(text));
+  onPostChange = (text) => {
+    this.context.dispatch(updateNewPostTextActionCreator(text));
   };
 
-  return (
-    <MyPosts
-      updateNewPostText={onPostChange}
-      addPost={addPost}
-      posts={profileState.posts}
-      newPostText={profileState.newPostText}
-    />
-  );
-};
+  render() {
+    const { profileState } = this.state;
+
+    return (
+      <MyPosts
+        updateNewPostText={this.onPostChange}
+        addPost={this.addPost}
+        posts={profileState.posts}
+        newPostText={profileState.newPostText}
+      />
+    );
+  }
+}
 
 export default MyPostsContainer;
