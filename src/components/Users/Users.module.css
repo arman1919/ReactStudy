@@ -1,0 +1,59 @@
+.usersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.users {
+    display: flex;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.usersPhoto {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.usersPhoto button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #2a9d8f;
+    font-weight: bold;
+}
+
+.usersPhoto img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.usersInfo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.usersName {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.usersLocation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
