@@ -2,16 +2,17 @@ import axios from 'axios';
 import s from './Users.module.css';
 
 let Users = (props) => {
-
-    if (props.users.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            props.setUsers(response.data.items)
-        })
+    let gerUsers = () => {
+        if (props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                props.setUsers(response.data.items)
+            })
+        }
     }
-
 
     return (
         <div className={s.usersContainer}>
+            <button onClick={gerUsers}>Get users</button>
             {                   
                 props.users.map( u => <div className={s.users} key={u.id}>
                     <div className={s.usersPhoto}>
